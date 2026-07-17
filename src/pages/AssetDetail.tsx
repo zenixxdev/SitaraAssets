@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Asset, Review } from '../types';
 import { Star, Copy, Check, Download, AlertTriangle, ShieldCheck, ChevronRight, User, Code } from 'lucide-react';
 import toast from 'react-hot-toast';
+import Markdown from 'react-markdown';
 
 export default function AssetDetail() {
   const { id } = useParams<{ id: string }>();
@@ -191,9 +192,8 @@ scene.add(mesh);
               )}
 
               {activeTab === 'docs' && (
-                <div className="prose dark:prose-invert max-w-none">
-                  <h3>About this Asset</h3>
-                  <p>{asset.longDescription || asset.description || 'No detailed documentation available.'}</p>
+                <div className="prose dark:prose-invert max-w-none markdown-body">
+                  <Markdown>{asset.longDescription || asset.description || 'No detailed documentation available.'}</Markdown>
                   
                   <h4>Usage Instructions</h4>
                   <p>{asset.usageInstructions || 'Simply copy the snippet and paste it into your Three.js initialization sequence.'}</p>

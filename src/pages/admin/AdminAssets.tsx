@@ -228,6 +228,14 @@ export default function AdminAssets() {
                   </div>
 
                   <div>
+                    <label className="block text-sm font-medium mb-1 flex justify-between">
+                      <span>Documentation (Markdown)</span>
+                      <span className="text-xs text-brand-500 font-normal">Supports GitHub-flavored markdown</span>
+                    </label>
+                    <textarea rows={6} value={editingAsset.longDescription || ''} onChange={e => setEditingAsset({...editingAsset, longDescription: e.target.value})} className="w-full px-3 py-2 rounded-lg border border-brand-200 dark:border-border-dark bg-transparent outline-none focus:border-brand-500 font-mono text-sm" placeholder="# My Asset&#10;Detailed description here..."></textarea>
+                  </div>
+
+                  <div>
                     <label className="block text-sm font-medium mb-1">Three.js Code</label>
                     <textarea rows={5} value={editingAsset.threejsCode || ''} onChange={e => setEditingAsset({...editingAsset, threejsCode: e.target.value})} className="w-full px-3 py-2 rounded-lg border border-brand-200 dark:border-border-dark bg-transparent outline-none focus:border-brand-500 font-mono text-xs" />
                   </div>

@@ -95,7 +95,7 @@ app.post("/api/reviews", (req, res) => {
 // Admin Auth Middleware Mock
 const adminAuth = (req: express.Request, res: express.Response, next: express.NextFunction) => {
   const authHeader = req.headers.authorization;
-  if (authHeader === "Bearer 1234ansh") {
+  if (authHeader === "Bearer admin") {
     next();
   } else {
     res.status(401).json({ error: "Unauthorized" });
@@ -104,8 +104,8 @@ const adminAuth = (req: express.Request, res: express.Response, next: express.Ne
 
 app.post("/api/admin/login", (req, res) => {
   const { password } = req.body;
-  if (password === "1234ansh") {
-    res.json({ token: "1234ansh" });
+  if (password === "admin") {
+    res.json({ token: "admin" });
   } else {
     res.status(401).json({ error: "Invalid password" });
   }

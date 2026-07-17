@@ -3,6 +3,14 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
 import AssetDetail from './pages/AssetDetail';
+import Categories from './pages/Categories';
+import Featured from './pages/Featured';
+import EditorsChoice from './pages/EditorsChoice';
+import LicenseGuide from './pages/LicenseGuide';
+import FAQ from './pages/FAQ';
+import About from './pages/About';
+import Contact from './pages/Contact';
+
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminLayout from './pages/admin/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -16,13 +24,13 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="explore" element={<Explore />} />
         <Route path="asset/:id" element={<AssetDetail />} />
-        <Route path="categories" element={<div className="p-8 text-center">Categories Page Placeholder</div>} />
-        <Route path="featured" element={<div className="p-8 text-center">Featured Page Placeholder</div>} />
-        <Route path="editors-choice" element={<div className="p-8 text-center">Editor's Choice Page Placeholder</div>} />
-        <Route path="license" element={<div className="p-8 text-center">License Guide Placeholder</div>} />
-        <Route path="faq" element={<div className="p-8 text-center">FAQ Placeholder</div>} />
-        <Route path="about" element={<div className="p-8 text-center">About Placeholder</div>} />
-        <Route path="contact" element={<div className="p-8 text-center">Contact Placeholder</div>} />
+        <Route path="categories" element={<Categories />} />
+        <Route path="featured" element={<Featured />} />
+        <Route path="editors-choice" element={<EditorsChoice />} />
+        <Route path="license" element={<LicenseGuide />} />
+        <Route path="faq" element={<FAQ />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Route>
 

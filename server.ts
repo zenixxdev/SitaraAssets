@@ -151,8 +151,76 @@ app.delete("/api/admin/assets/:id", adminAuth, (req, res) => {
   res.status(204).send();
 });
 
-// Settings, Categories, Reviews admin routes can be similarly added as needed...
+// Admin Categories
+app.get("/api/admin/categories", adminAuth, (req, res) => {
+  const db = readDB();
+  res.json(db.categories);
+});
 
+app.post("/api/admin/categories", adminAuth, (req, res) => {
+  const db = readDB();
+  const newCat = { id: req.body.id || uuidv4(), name: req.body.name };
+  db.categories.push(newCat);
+  writeDB(db);
+  res.status(201).json(newCat);
+});
+
+app.put("/api/admin/categories/:id", adminAuth, (req, res) => {
+  const db = readDB();
+  const index = db.categories.findIndex((c: any) => c.id === req.params.id);
+  if (index !== -1) {
+    db.categories[index] = { ...db.categories[index], ...req.body };
+    writeDB(db);
+    res.json(db.categories[index]);
+  } else {
+    res.status(404).json({ error: "Not found" });
+  }
+});
+
+app.delete("/api/admin/categories/:id", adminAuth, (req, res) => {
+  const db = readDB();
+  db.categories = db.categories.filter((c: any) => c.id !== req.params.id);
+  writeDB(db);
+  res.status(204).send();
+});
+
+// Admin Reviews
+app.get("/api/admin/reviews", adminAuth, (req, res) => {
+  const db = readDB();
+  res.json(db.reviews);
+});
+
+app.put("/api/admin/reviews/:id", adminAuth, (req, res) => {
+  const db = readDB();
+  const index = db.reviews.findIndex((r: any) => r.id === req.params.id);
+  if (index !== -1) {
+    db.reviews[index] = { ...db.reviews[index], ...req.body };
+    writeDB(db);
+    res.json(db.reviews[index]);
+  } else {
+    res.status(404).json({ error: "Not found" });
+  }
+});
+
+app.delete("/api/admin/reviews/:id", adminAuth, (req, res) => {
+  const db = readDB();
+  db.reviews = db.reviews.filter((r: any) => r.id !== req.params.id);
+  writeDB(db);
+  res.status(204).send();
+});
+
+// Admin Settings
+app.get("/api/admin/settings", adminAuth, (req, res) => {
+  const db = readDB();
+  res.json(db.settings || {});
+});
+
+app.put("/api/admin/settings", adminAuth, (req, res) => {
+  const db = readDB();
+  db.settings = { ...db.settings, ...req.body };
+  writeDB(db);
+  res.json(db.settings);
+});
 
 // --- VITE MIDDLEWARE ---
 async function startServer() {

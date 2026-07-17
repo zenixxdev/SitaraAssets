@@ -17,6 +17,11 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminStructureGuide from './pages/admin/AdminStructureGuide';
 import NotFound from './pages/NotFound';
 
+import AdminAssets from './pages/admin/AdminAssets';
+import AdminReviews from './pages/admin/AdminReviews';
+import AdminCategories from './pages/admin/AdminCategories';
+import AdminSettings from './pages/admin/AdminSettings';
+
 export default function App() {
   return (
     <Routes>
@@ -39,11 +44,11 @@ export default function App() {
         <Route index element={<AdminLogin />} />
         <Route path="dashboard" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
-          <Route path="assets" element={<div className="p-8 text-center">Asset Manager</div>} />
-          <Route path="reviews" element={<div className="p-8 text-center">Review Manager</div>} />
-          <Route path="categories" element={<div className="p-8 text-center">Category Manager</div>} />
+          <Route path="assets" element={<AdminAssets />} />
+          <Route path="reviews" element={<AdminReviews />} />
+          <Route path="categories" element={<AdminCategories />} />
           <Route path="structure-guide" element={<AdminStructureGuide />} />
-          <Route path="settings" element={<div className="p-8 text-center">Site Settings</div>} />
+          <Route path="settings" element={<AdminSettings />} />
         </Route>
       </Route>
     </Routes>

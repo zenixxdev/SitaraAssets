@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Sitara",
+  "description": "Premium 3D Assets for Modern Web Games",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
